@@ -12,11 +12,9 @@ import {
 
 export default function Todo() {
   const { allTodo, selectedTodo } = useSelector((state) => state.todoList);
-  console.log(selectedTodo, "selected");
   const dispatch = useDispatch();
   const [item, setItem] = useState("");
   useEffect(() => {
-    //   debugger;
     dispatch(fetchAllTodos());
   }, []);
   return (
@@ -65,7 +63,6 @@ export default function Todo() {
                     className={item.completed ? "completed" : ""}
                   >
                     {item.title}{" "}
-                    {/* <button onClick={() => dispatch(removeItem(i))}>x</button> */}
                   </li>
                 );
               })

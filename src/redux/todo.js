@@ -33,7 +33,6 @@ export const todoSlice = createSlice({
     },
     toggleTodoById: (state, action) => {
       state.allTodo = state.allTodo.map((item, i) => {
-        console.log(item, "itwm");
         if (item.id == action.payload) {
           item.completed = !item.completed;
         }
@@ -43,7 +42,6 @@ export const todoSlice = createSlice({
   },
   extraReducers: {
     [fetchAllTodos.fulfilled.type]: (state, action) => {
-      console.log(action.payload, "payload");
       state.allTodo = action.payload;
     },
   },
