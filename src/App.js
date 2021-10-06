@@ -5,9 +5,9 @@ import Todo from "./components/todo";
 
 export default function App() {
   return (
-    <div className="App">
-        <Counter />
+    <React.Fragment>
+        {/* <Counter /> */}
         <Todo />
-    </div>
+    </React.Fragment>
   );
 }

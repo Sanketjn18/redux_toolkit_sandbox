@@ -1,22 +1,55 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const initialState = []
-
+export const fetchAllTodos = createAsyncThunk("app/fetchAppTodo", () =>
+  axios
+    .get(`https://jsonplaceholder.typicode.com/todos`)
+    .then((response) => response.data)
+    .catch((error) => error)
+);
 
 export const todoSlice = createSlice({
-      name: "todos",
-      initialState,
-      reducers: {
-        addItem: (state, action) => {
-            let lastId = state.length-1;
-          state.push({id: lastId+1, value : action.payload});
-        },
-        removeItem: (state, action) => {
-           state.splice(action.payload,1);
-        },
-  }
+  name: "todos",
+  initialState: {
+    allTodo: [],
+    selectedTodo: [],
+  },
+  reducers: {
+    deleteTodoById: (state, action) => {
+      if (state.selectedTodo) {
+        state.allTodo = state.allTodo.filter(
+          (item) => item.id != action.payload
+        );
+        state.selectedTodo = [];
+      }
+    },
+    addTodo: (state, action) => {
+      state.allTodo.push(action.payload);
+    },
+    selectTodoById: (state, action) => {
+      state.selectedTodo = state.allTodo.filter(
+        (item) => item.id == action.payload
+      );
+    },
+    toggleTodoById: (state, action) => {
+      state.allTodo = state.allTodo.map((item, i) => {
+        console.log(item, "itwm");
+        if (item.id == action.payload) {
+          item.completed = !item.completed;
+        }
+        return item;
+      });
+    },
+  },
+  extraReducers: {
+    [fetchAllTodos.fulfilled.type]: (state, action) => {
+      console.log(action.payload, "payload");
+      state.allTodo = action.payload;
+    },
+  },
 });
 
-export const { addItem, removeItem } = todoSlice.actions;
+export const { deleteTodoById, addTodo, selectTodoById, toggleTodoById } =
+  todoSlice.actions;
 
 export default todoSlice.reducer;

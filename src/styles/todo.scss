@@ -1,0 +1,20 @@
+
+.addTodo{
+    height: 50px;
+    text-align: center;
+ .inputTodo {
+    border-radius: 10px;
+    margin: 0px 18px;
+ }
+}
+
+.innerDiv{
+    .todoList {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+    .completed{
+        text-decoration: line-through;
+    }
+   
+}

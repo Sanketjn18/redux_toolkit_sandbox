@@ -7,13 +7,13 @@ export default function App() {
   const { value } = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   return (
-    <div className="App">
+    <React.Fragment>
       <h1> The count is: {value}</h1>
       <button onClick={() => dispatch(increment())}>increment</button>
       <button onClick={() => dispatch(decrement())}>decrement</button>
       <button onClick={() => dispatch(incrementByAmount(33))}>
         Increment by 33
       </button>
-    </div>
+    </React.Fragment>
   );
 }
