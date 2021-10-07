@@ -1,20 +1,98 @@
-
-.addTodo{
-    height: 50px;
-    text-align: center;
- .inputTodo {
+.addTodo {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #b87db8;
+  .inputTodo {
     border-radius: 10px;
     margin: 0px 18px;
- }
+    height: 25px;
+    width: 230px;
+    border-style: none;
+    outline: none;
+  }
+  .actionButton {
+    height: 25px;
+    width: 116px;
+    background: #fff;
+    border-style: none;
+    font-size: large;
+    border-radius: 11px;
+    outline: none;
+    cursor: pointer;
+  }
+  .inputTodo:focus-within {
+    border-style: none;
+  }
+  label {
+    font-size: x-large;
+  }
 }
 
-.innerDiv{
-    .todoList {
-        max-height: 500px;
-        overflow-y: auto;
+.innerDiv {
+  display: flex;
+  .actionButton {
+    height: 35px;
+    width: 116px;
+    background: #fff;
+    font-size: large;
+    border-radius: 11px;
+    outline: none;
+    border: 1px solid black;
+    margin: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .todoList {
+    flex: 2;
+    text-align: center;
+    p {
+      display: flex;
+      height: 50px;
+      align-items: center;
+      border-radius: 10px;
+      margin: 25px;
+      background: #918780;
+      padding: 5px;
+      cursor: pointer;
     }
-    .completed{
-        text-decoration: line-through;
+    .todoListItem {
+      max-height: 500px;
+      overflow-y: auto;
+      display: inline-block;
+      background: #cfc4c0;
     }
-   
+    .todoListItem::-webkit-scrollbar {
+      width: 16px;
+      height: 16px;
+      background: inherit;
+    }
+    .todoListItem::-webkit-scrollbar-track:vertical {
+      border-right: 8px solid rgba(0, 0, 0, 0.2);
+    }
+    .todoListItem::-webkit-scrollbar-thumb:vertical {
+      border-right: 8px solid rgba(255, 255, 255, 0.2);
+    }
+    .todoListItem::-webkit-scrollbar-track:horizontal {
+      border-bottom: 8px solid rgba(0, 0, 0, 0.2);
+    }
+    .todoListItem::-webkit-scrollbar-thumb:horizontal {
+      border-bottom: 8px solid rgba(255, 255, 255, 0.2);
+    }
+    .todoListItem::-webkit-scrollbar-corner,
+    .todoListItem::-webkit-resizer {
+      background: inherit;
+      border-right: 8px solid rgba(255, 255, 255, 0.2); //optional
+      border-bottom: 8px solid rgba(255, 255, 255, 0.2); //optional
+    }
+  }
+  .selectedTodo {
+    flex: 2;
+    text-align: center;
+  }
+  .completed {
+    text-decoration: line-through;
+  }
 }
